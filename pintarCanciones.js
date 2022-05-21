@@ -1,30 +1,7 @@
-//PASOS PARA CONSUMIR UN API
+ //PASOS PARA CONSUMIR UN API
 
-//1.¿Para donde voy? (conocer URI del servicio o API a consumir)
-const URI ='https://api.spotify.com/v1/artists/790FomKkXshlbRYZFtlgla/top-tracks?market=US' //pegamos el enlace de GET del rayito
-
-//2. Armo la petición, ¿que voy a hacer?
-const TOKEN="Bearer BQDY_ChO3yDdczfr91LCP5FfCCLswCxPxqzbV-Q28jb6cTcV7ZAlqrKfl8Pw4EoKJT9i6HaGwaO8GL9whZK5cxtpmZbqRRL6XXiXN6-XHJaYTtlbRDnvFmwQHIpeGwHZaN2YKSm2lrwKhOMGCGJIzJiV5AzAnCY" 
-const PETICION={
-    metodo: "GET",
-    headers: {Authorization:TOKEN}
-}
-
-//3. CONSUMNIR EL API - IR AL SERVIDOR A PEDIR LA RESPUESTA)
-fetch(URI,PETICION)
-.then(function(respuesta){
-    return(respuesta.json()) //garantizo formato json
-})
-.then(function(respuesta){
-    pintarCanciones(respuesta) //hago lo que quiera con la respuesta
-})
-.catch(function(respuesta){
-    console.log(respuesta) //muestro el fallo si no se pudo consumir el API 
-})
-
-
-//Peticion para pintar la info que llega del API 
-function pintarCanciones(canciones){
+ //Peticion para pintar la info que llega del API 
+export function pintarCanciones(canciones){
     
     let fila = document.getElementById("fila")
 
@@ -58,8 +35,6 @@ function pintarCanciones(canciones){
         tarjeta.appendChild(audio)
         columna.appendChild(tarjeta)
         fila.appendChild(columna)
-
-
     })
 }
 
